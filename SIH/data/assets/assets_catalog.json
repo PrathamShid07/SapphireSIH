@@ -1,0 +1,496 @@
+{
+  "curated_sedan": {
+    "asset_id": "curated_sedan",
+    "source": "curated_procedural",
+    "license": "CC0",
+    "class_name": "car",
+    "subcategory": "sedan",
+    "dimensions": {
+      "length": 4.4,
+      "width": 1.8,
+      "height": 1.45,
+      "units": "meters"
+    },
+    "coordinate_system": "right-handed (+X forward, +Y left, +Z up)",
+    "up_axis": "+Z",
+    "forward_axis": "+X",
+    "origin_description": "ground contact center at (0, 0, 0)",
+    "texture_available": false,
+    "mesh_file": "data\\assets\\normalized\\curated_sedan.glb",
+    "tags": [
+      "car",
+      "sedan",
+      "curated",
+      "procedural"
+    ],
+    "notes": ""
+  },
+  "curated_suv": {
+    "asset_id": "curated_suv",
+    "source": "curated_procedural",
+    "license": "CC0",
+    "class_name": "car",
+    "subcategory": "suv",
+    "dimensions": {
+      "length": 4.6,
+      "width": 1.9,
+      "height": 1.7,
+      "units": "meters"
+    },
+    "coordinate_system": "right-handed (+X forward, +Y left, +Z up)",
+    "up_axis": "+Z",
+    "forward_axis": "+X",
+    "origin_description": "ground contact center at (0, 0, 0)",
+    "texture_available": false,
+    "mesh_file": "data\\assets\\normalized\\curated_suv.glb",
+    "tags": [
+      "car",
+      "suv",
+      "curated",
+      "procedural"
+    ],
+    "notes": ""
+  },
+  "curated_hatchback": {
+    "asset_id": "curated_hatchback",
+    "source": "curated_procedural",
+    "license": "CC0",
+    "class_name": "car",
+    "subcategory": "hatchback",
+    "dimensions": {
+      "length": 4.0,
+      "width": 1.75,
+      "height": 1.5,
+      "units": "meters"
+    },
+    "coordinate_system": "right-handed (+X forward, +Y left, +Z up)",
+    "up_axis": "+Z",
+    "forward_axis": "+X",
+    "origin_description": "ground contact center at (0, 0, 0)",
+    "texture_available": false,
+    "mesh_file": "data\\assets\\normalized\\curated_hatchback.glb",
+    "tags": [
+      "car",
+      "hatchback",
+      "curated",
+      "procedural"
+    ],
+    "notes": ""
+  },
+  "curated_coupe": {
+    "asset_id": "curated_coupe",
+    "source": "curated_procedural",
+    "license": "CC0",
+    "class_name": "car",
+    "subcategory": "coupe",
+    "dimensions": {
+      "length": 4.5,
+      "width": 1.85,
+      "height": 1.3,
+      "units": "meters"
+    },
+    "coordinate_system": "right-handed (+X forward, +Y left, +Z up)",
+    "up_axis": "+Z",
+    "forward_axis": "+X",
+    "origin_description": "ground contact center at (0, 0, 0)",
+    "texture_available": false,
+    "mesh_file": "data\\assets\\normalized\\curated_coupe.glb",
+    "tags": [
+      "car",
+      "coupe",
+      "curated",
+      "procedural"
+    ],
+    "notes": ""
+  },
+  "curated_sports_car": {
+    "asset_id": "curated_sports_car",
+    "source": "curated_procedural",
+    "license": "CC0",
+    "class_name": "car",
+    "subcategory": "sports_car",
+    "dimensions": {
+      "length": 4.3,
+      "width": 1.88,
+      "height": 1.2,
+      "units": "meters"
+    },
+    "coordinate_system": "right-handed (+X forward, +Y left, +Z up)",
+    "up_axis": "+Z",
+    "forward_axis": "+X",
+    "origin_description": "ground contact center at (0, 0, 0)",
+    "texture_available": false,
+    "mesh_file": "data\\assets\\normalized\\curated_sports_car.glb",
+    "tags": [
+      "car",
+      "sports_car",
+      "curated",
+      "procedural"
+    ],
+    "notes": ""
+  },
+  "curated_station_wagon": {
+    "asset_id": "curated_station_wagon",
+    "source": "curated_procedural",
+    "license": "CC0",
+    "class_name": "car",
+    "subcategory": "station_wagon",
+    "dimensions": {
+      "length": 4.7,
+      "width": 1.82,
+      "height": 1.55,
+      "units": "meters"
+    },
+    "coordinate_system": "right-handed (+X forward, +Y left, +Z up)",
+    "up_axis": "+Z",
+    "forward_axis": "+X",
+    "origin_description": "ground contact center at (0, 0, 0)",
+    "texture_available": false,
+    "mesh_file": "data\\assets\\normalized\\curated_station_wagon.glb",
+    "tags": [
+      "car",
+      "station_wagon",
+      "curated",
+      "procedural"
+    ],
+    "notes": ""
+  },
+  "curated_compact": {
+    "asset_id": "curated_compact",
+    "source": "curated_procedural",
+    "license": "CC0",
+    "class_name": "car",
+    "subcategory": "compact",
+    "dimensions": {
+      "length": 3.8,
+      "width": 1.68,
+      "height": 1.48,
+      "units": "meters"
+    },
+    "coordinate_system": "right-handed (+X forward, +Y left, +Z up)",
+    "up_axis": "+Z",
+    "forward_axis": "+X",
+    "origin_description": "ground contact center at (0, 0, 0)",
+    "texture_available": false,
+    "mesh_file": "data\\assets\\normalized\\curated_compact.glb",
+    "tags": [
+      "car",
+      "compact",
+      "curated",
+      "procedural"
+    ],
+    "notes": ""
+  },
+  "curated_box_truck": {
+    "asset_id": "curated_box_truck",
+    "source": "curated_procedural",
+    "license": "CC0",
+    "class_name": "truck",
+    "subcategory": "box_truck",
+    "dimensions": {
+      "length": 8.0,
+      "width": 2.5,
+      "height": 3.2,
+      "units": "meters"
+    },
+    "coordinate_system": "right-handed (+X forward, +Y left, +Z up)",
+    "up_axis": "+Z",
+    "forward_axis": "+X",
+    "origin_description": "ground contact center at (0, 0, 0)",
+    "texture_available": false,
+    "mesh_file": "data\\assets\\normalized\\curated_box_truck.glb",
+    "tags": [
+      "truck",
+      "box_truck",
+      "curated",
+      "procedural"
+    ],
+    "notes": ""
+  },
+  "curated_flatbed_truck": {
+    "asset_id": "curated_flatbed_truck",
+    "source": "curated_procedural",
+    "license": "CC0",
+    "class_name": "truck",
+    "subcategory": "flatbed_truck",
+    "dimensions": {
+      "length": 8.5,
+      "width": 2.5,
+      "height": 1.8,
+      "units": "meters"
+    },
+    "coordinate_system": "right-handed (+X forward, +Y left, +Z up)",
+    "up_axis": "+Z",
+    "forward_axis": "+X",
+    "origin_description": "ground contact center at (0, 0, 0)",
+    "texture_available": false,
+    "mesh_file": "data\\assets\\normalized\\curated_flatbed_truck.glb",
+    "tags": [
+      "truck",
+      "flatbed_truck",
+      "curated",
+      "procedural"
+    ],
+    "notes": ""
+  },
+  "curated_pickup_truck": {
+    "asset_id": "curated_pickup_truck",
+    "source": "curated_procedural",
+    "license": "CC0",
+    "class_name": "truck",
+    "subcategory": "pickup_truck",
+    "dimensions": {
+      "length": 5.5,
+      "width": 2.0,
+      "height": 1.9,
+      "units": "meters"
+    },
+    "coordinate_system": "right-handed (+X forward, +Y left, +Z up)",
+    "up_axis": "+Z",
+    "forward_axis": "+X",
+    "origin_description": "ground contact center at (0, 0, 0)",
+    "texture_available": false,
+    "mesh_file": "data\\assets\\normalized\\curated_pickup_truck.glb",
+    "tags": [
+      "truck",
+      "pickup_truck",
+      "curated",
+      "procedural"
+    ],
+    "notes": ""
+  },
+  "curated_cargo_van": {
+    "asset_id": "curated_cargo_van",
+    "source": "curated_procedural",
+    "license": "CC0",
+    "class_name": "van",
+    "subcategory": "cargo_van",
+    "dimensions": {
+      "length": 5.2,
+      "width": 2.0,
+      "height": 2.2,
+      "units": "meters"
+    },
+    "coordinate_system": "right-handed (+X forward, +Y left, +Z up)",
+    "up_axis": "+Z",
+    "forward_axis": "+X",
+    "origin_description": "ground contact center at (0, 0, 0)",
+    "texture_available": false,
+    "mesh_file": "data\\assets\\normalized\\curated_cargo_van.glb",
+    "tags": [
+      "van",
+      "cargo_van",
+      "curated",
+      "procedural"
+    ],
+    "notes": ""
+  },
+  "curated_city_bus": {
+    "asset_id": "curated_city_bus",
+    "source": "curated_procedural",
+    "license": "CC0",
+    "class_name": "bus",
+    "subcategory": "city_bus",
+    "dimensions": {
+      "length": 10.5,
+      "width": 2.6,
+      "height": 3.2,
+      "units": "meters"
+    },
+    "coordinate_system": "right-handed (+X forward, +Y left, +Z up)",
+    "up_axis": "+Z",
+    "forward_axis": "+X",
+    "origin_description": "ground contact center at (0, 0, 0)",
+    "texture_available": false,
+    "mesh_file": "data\\assets\\normalized\\curated_city_bus.glb",
+    "tags": [
+      "bus",
+      "city_bus",
+      "curated",
+      "procedural"
+    ],
+    "notes": ""
+  },
+  "curated_coach_bus": {
+    "asset_id": "curated_coach_bus",
+    "source": "curated_procedural",
+    "license": "CC0",
+    "class_name": "bus",
+    "subcategory": "coach_bus",
+    "dimensions": {
+      "length": 12.0,
+      "width": 2.6,
+      "height": 3.5,
+      "units": "meters"
+    },
+    "coordinate_system": "right-handed (+X forward, +Y left, +Z up)",
+    "up_axis": "+Z",
+    "forward_axis": "+X",
+    "origin_description": "ground contact center at (0, 0, 0)",
+    "texture_available": false,
+    "mesh_file": "data\\assets\\normalized\\curated_coach_bus.glb",
+    "tags": [
+      "bus",
+      "coach_bus",
+      "curated",
+      "procedural"
+    ],
+    "notes": ""
+  },
+  "curated_oak_tree": {
+    "asset_id": "curated_oak_tree",
+    "source": "curated_procedural",
+    "license": "CC0",
+    "class_name": "tree",
+    "subcategory": "oak_tree",
+    "dimensions": {
+      "length": 7.0,
+      "width": 7.0,
+      "height": 8.0,
+      "units": "meters"
+    },
+    "coordinate_system": "right-handed (+X forward, +Y left, +Z up)",
+    "up_axis": "+Z",
+    "forward_axis": "+X",
+    "origin_description": "ground contact center at (0, 0, 0)",
+    "texture_available": false,
+    "mesh_file": "data\\assets\\normalized\\curated_oak_tree.glb",
+    "tags": [
+      "tree",
+      "oak_tree",
+      "curated",
+      "procedural"
+    ],
+    "notes": ""
+  },
+  "curated_pine_tree": {
+    "asset_id": "curated_pine_tree",
+    "source": "curated_procedural",
+    "license": "CC0",
+    "class_name": "tree",
+    "subcategory": "pine_tree",
+    "dimensions": {
+      "length": 5.0,
+      "width": 5.0,
+      "height": 12.0,
+      "units": "meters"
+    },
+    "coordinate_system": "right-handed (+X forward, +Y left, +Z up)",
+    "up_axis": "+Z",
+    "forward_axis": "+X",
+    "origin_description": "ground contact center at (0, 0, 0)",
+    "texture_available": false,
+    "mesh_file": "data\\assets\\normalized\\curated_pine_tree.glb",
+    "tags": [
+      "tree",
+      "pine_tree",
+      "curated",
+      "procedural"
+    ],
+    "notes": ""
+  },
+  "curated_palm_tree": {
+    "asset_id": "curated_palm_tree",
+    "source": "curated_procedural",
+    "license": "CC0",
+    "class_name": "tree",
+    "subcategory": "palm_tree",
+    "dimensions": {
+      "length": 6.0,
+      "width": 6.0,
+      "height": 10.0,
+      "units": "meters"
+    },
+    "coordinate_system": "right-handed (+X forward, +Y left, +Z up)",
+    "up_axis": "+Z",
+    "forward_axis": "+X",
+    "origin_description": "ground contact center at (0, 0, 0)",
+    "texture_available": false,
+    "mesh_file": "data\\assets\\normalized\\curated_palm_tree.glb",
+    "tags": [
+      "tree",
+      "palm_tree",
+      "curated",
+      "procedural"
+    ],
+    "notes": ""
+  },
+  "curated_round_deciduous": {
+    "asset_id": "curated_round_deciduous",
+    "source": "curated_procedural",
+    "license": "CC0",
+    "class_name": "tree",
+    "subcategory": "round_deciduous",
+    "dimensions": {
+      "length": 6.0,
+      "width": 6.0,
+      "height": 7.0,
+      "units": "meters"
+    },
+    "coordinate_system": "right-handed (+X forward, +Y left, +Z up)",
+    "up_axis": "+Z",
+    "forward_axis": "+X",
+    "origin_description": "ground contact center at (0, 0, 0)",
+    "texture_available": false,
+    "mesh_file": "data\\assets\\normalized\\curated_round_deciduous.glb",
+    "tags": [
+      "tree",
+      "round_deciduous",
+      "curated",
+      "procedural"
+    ],
+    "notes": ""
+  },
+  "curated_cypress_tree": {
+    "asset_id": "curated_cypress_tree",
+    "source": "curated_procedural",
+    "license": "CC0",
+    "class_name": "tree",
+    "subcategory": "cypress_tree",
+    "dimensions": {
+      "length": 2.0,
+      "width": 2.0,
+      "height": 9.0,
+      "units": "meters"
+    },
+    "coordinate_system": "right-handed (+X forward, +Y left, +Z up)",
+    "up_axis": "+Z",
+    "forward_axis": "+X",
+    "origin_description": "ground contact center at (0, 0, 0)",
+    "texture_available": false,
+    "mesh_file": "data\\assets\\normalized\\curated_cypress_tree.glb",
+    "tags": [
+      "tree",
+      "cypress_tree",
+      "curated",
+      "procedural"
+    ],
+    "notes": ""
+  },
+  "curated_birch_tree": {
+    "asset_id": "curated_birch_tree",
+    "source": "curated_procedural",
+    "license": "CC0",
+    "class_name": "tree",
+    "subcategory": "birch_tree",
+    "dimensions": {
+      "length": 5.0,
+      "width": 5.0,
+      "height": 9.0,
+      "units": "meters"
+    },
+    "coordinate_system": "right-handed (+X forward, +Y left, +Z up)",
+    "up_axis": "+Z",
+    "forward_axis": "+X",
+    "origin_description": "ground contact center at (0, 0, 0)",
+    "texture_available": false,
+    "mesh_file": "data\\assets\\normalized\\curated_birch_tree.glb",
+    "tags": [
+      "tree",
+      "birch_tree",
+      "curated",
+      "procedural"
+    ],
+    "notes": ""
+  }
+}

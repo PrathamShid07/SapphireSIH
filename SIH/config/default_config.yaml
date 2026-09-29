@@ -1,0 +1,190 @@
+project:
+  name: "Drone-to-Hybrid-3D-Digital-Twin"
+  version: "0.1.0"
+  stage: 10
+
+paths:
+  data_dir: "data"
+  input_dir: "data/input"
+  raw_dir: "data/raw"
+  interim_dir: "data/interim"
+  processed_dir: "data/processed"
+  assets_dir: "data/assets"
+  outputs_dir: "outputs"
+  logs_dir: "logs"
+
+execution:
+  profile: "BALANCED"  # Options: BALANCED, FAST_PREVIEW, HIGH_QUALITY
+  resume: true
+  device: "auto"
+
+logging:
+  level: "INFO"
+  console: true
+  file: true
+  filename: "pipeline.log"
+
+preprocessing:
+  target_fps: 2.0
+  max_frames: null
+  quality_thresholds:
+    min_blur_score: 100.0
+    min_brightness: 40.0
+    max_brightness: 220.0
+    min_contrast: 30.0
+    max_similarity: 0.92
+  contact_sheet:
+    cols: 5
+    thumb_width: 320
+    thumb_height: 240
+  reconstruction:
+    strategy: "selected_keyframes"  # selected_keyframes: reconstruct from the quality-filtered keyframes; decoded_stride: every Nth decoded frame
+    stride: 1
+
+input:
+  video: null
+  telemetry_csv: null
+
+telemetry:
+  max_time_diff_s: 0.5  # frames whose nearest telemetry row is farther than this in video time get no GPS
+  frame_index_tolerance: 1  # |decoded frame index - telemetry frame_index| above this is flagged (not rejected)
+  require_valid_for_reconstruction: false
+
+camera:
+  # Drone sensor and optical parameters (REQUIRED when sfm.single_camera: true to prevent scale & flattening drift)
+  # Examples:
+  # - DJI Phantom 4 Pro / Mavic 2 Pro (1-inch sensor): sensor_width_mm: 13.2, focal_length_mm: 8.8 (24mm eqv)
+  # - DJI Mavic Air 2 / Mini 3 Pro (1/1.3-inch sensor): sensor_width_mm: 9.6, focal_length_mm: 6.72
+  # - Standard 1/2.3-inch UAV sensor: sensor_width_mm: 6.17, focal_length_mm: 4.5
+  sensor_width_mm: 13.2
+  focal_length_mm: 8.8
+  custom_calibration: null
+
+sfm:
+  matcher_type: "sequential"
+  camera_model: "OPENCV"  # OPENCV (8-params: fx,fy,cx,cy,k1,k2,p1,p2) includes radial & tangential distortion
+  single_camera: true
+  use_gpu: true
+  max_num_features: 8192
+  gpu_index: null  # null lets COLMAP choose; set an explicit index such as "0" on GPU nodes
+  features:
+    max_num_features: null  # null keeps the COLMAP default
+  sequential:
+    overlap: null  # null keeps the COLMAP default
+  mapper:
+    init_min_tri_angle: null  # degrees; null keeps the COLMAP default
+    init_min_num_inliers: null  # null keeps the COLMAP default
+  pca_aspect_ratio_warn_threshold: 500.0
+
+dense:
+  max_image_size: 2000  # Set to 1200 for FAST_PREVIEW profile
+  patch_match_gpu: true  # PatchMatch Stereo has no CPU implementation; false is rejected
+  patch_match_gpu_index: "0"  # explicit CUDA device index/indices; -1 (all GPUs) is rejected
+  min_registration_fraction: null  # Stage 5 refuses to run if Stage 4 registered a smaller fraction of its input images
+  patch_match_geom_consistency: true
+  patch_match_min_triangulation_angle: 4.0
+  patch_match_filter_min_ncc: 0.15
+  patch_match_filter_geom_consistency_max_cost: 1.0
+
+  stereo_fusion_min_num_pixels: 5  # Increased from 3 to 5 (COLMAP standard baseline)
+  stereo_fusion_max_num_pixels: 10000
+  stereo_fusion_max_reproj_error: 1.5
+  stereo_fusion_max_depth_error: 0.005
+  stereo_fusion_max_normal_error: 10.0
+
+  clean_outliers_std_ratio: 2.0
+  clean_outliers_nb_neighbors: 20
+  mesher_type: "poisson"
+  mesh_fallback_max_edge_length: 5.0  # only used if both COLMAP native meshers fail
+  mesh_fallback_max_slope_ratio: 8.0  # only used if both COLMAP native meshers fail
+  pca_aspect_ratio_warn_threshold: 500.0
+
+segmentation:
+  model: "deeplabv3_mobilenet_v3_large"
+  num_classes: 8
+  input_size: [512, 512]
+  batch_size: 2
+  epochs: 5
+  learning_rate: 0.0001
+  dev_subset_size: 50
+  inference_only: false
+
+detection:
+  model: "fasterrcnn_mobilenet_v3_large_fpn"
+  confidence_threshold: 0.5
+  nms_iou_threshold: 0.5
+  target_classes: ["car", "van", "truck", "bus"]
+  batch_size: 2
+  learning_rate: 0.0001
+  epochs: 5
+
+tracking:
+  max_age: 5
+  min_hits: 2
+  iou_threshold: 0.3
+
+masking:
+  approved_for_reconstruction: true  # dataset-level gate; false makes Stage 8 refuse to run
+  dilation_px: 15
+  propagate_gaps: true
+  max_interpolation_gap: 3
+  motion_blur_margin: 5
+  compare_with_unmasked: true
+  # EXPERIMENTAL (see docs/STAGE8_OPTIMIZATION.md): when true, Stage 8 reuses
+  # Stage 4's COLMAP database and camera poses (via point_triangulator on an
+  # isolated pruned copy) instead of re-running feature_extractor + matcher +
+  # mapper from scratch. Default is false until validated on your own dataset -
+  # flip to true only after comparing the two paths' quality metrics yourself.
+  reuse_stage4_poses: false
+  # EXPERIMENTAL, only consulted when reuse_stage4_poses is true (see
+  # docs/STAGE8_OPTIMIZATION.md "Limited Pose Refinement" experiment): after
+  # pruning + point_triangulator, run one additional COLMAP bundle_adjuster
+  # pass allowing camera poses (never intrinsics) to move to better fit the
+  # pruned observations. Default false - point_triangulator's fixed-pose
+  # output (masking.reuse_stage4_poses alone) is used as-is.
+  refine_reused_poses: false
+
+localization:
+  ground_ransac_distance_thresh: 0.15
+  ground_search_radius: 10.0
+  default_car_dimensions: [4.4, 1.8, 1.5]
+  default_truck_dimensions: [8.0, 2.5, 3.2]
+  default_bus_dimensions: [10.5, 2.6, 3.2]
+  default_van_dimensions: [5.2, 2.0, 2.2]
+
+assets:
+  catalog_path: "data/assets/assets_catalog.json"
+  normalized_dir: "data/assets/normalized"
+  top_k_candidates: 3
+  matching_weights:
+    class_weight: 0.5
+    dimension_weight: 0.3
+    shape_weight: 0.15
+    context_weight: 0.05
+
+fusion:
+  max_float_tolerance_m: 0.25
+  max_penetration_tolerance_m: 0.15
+  collision_iou_threshold: 0.1
+  snap_to_ground: true
+  align_to_terrain_normal: true
+  max_terrain_tilt_deg: 25.0
+  export_formats: ["glb", "obj", "ply"]
+  include_reconstructed_mesh: true
+
+texturing_cleanup:
+  high_quality:
+    max_faces: 500000
+    texture_size: 4096
+    hole_max_size: 30
+  medium_quality:
+    max_faces: 120000
+    texture_size: 2048
+    hole_max_size: 50
+  low_quality:
+    max_faces: 35000
+    texture_size: 1024
+    hole_max_size: 100
+  default_tier: "all"
+  clean_non_manifold: true
+  smooth_normals: true

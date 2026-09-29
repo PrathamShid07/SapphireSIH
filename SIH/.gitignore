@@ -1,0 +1,46 @@
+# Virtual Environment
+.venv/
+env/
+venv/
+cluster_env/
+
+# Python Cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Large Data - NOT tracked in git (use DVC or manual copy)
+data/raw/
+
+# Pipeline Outputs - regenerated from source
+outputs/
+
+# Log
+logs/*.log
+logs/*.out
+logs/*.err
+
+# Large binaries & archives
+*.zip
+*.tar.gz
+*.tar.bz2
+colmap_download.zip
+
+# Colmap binary cache
+colmap_bin/
+
+# IDE / OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/settings.json
+
+# Cluster temp artifacts
+slurm-*.out
+*.srun
+
+# Per-dataset logs
+logs/**/*.log
+logs/**/*.out
+logs/**/*.err

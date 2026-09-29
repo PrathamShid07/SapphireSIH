@@ -44,3 +44,13 @@ slurm-*.out
 logs/**/*.log
 logs/**/*.out
 logs/**/*.err
+
+# Model weights / databases
+*.db
+*.sqlite
+*.pt
+*.pth
+*.onnx
+
+# Large sample not needed for final_demo
+SIH/data/input/sample_drone.mp4

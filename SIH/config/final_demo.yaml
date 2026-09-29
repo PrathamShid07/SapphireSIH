@@ -1,0 +1,42 @@
+extends: default_config.yaml
+
+input:
+  video: "data/input/final_demo.mp4"
+  telemetry_csv: "data/input/final_demo.csv"
+
+paths:
+  outputs_dir: "outputs"
+  logs_dir: "logs/final_demo"
+
+preprocessing:
+  target_fps: 2.0
+  reconstruction:
+    strategy: "decoded_stride"
+    stride: 1
+
+telemetry:
+  max_time_diff_s: 0.05
+  frame_index_tolerance: 1
+  require_valid_for_reconstruction: true
+
+sfm:
+  matcher_type: "sequential"
+  camera_model: "OPENCV"
+  single_camera: true
+  use_gpu: true
+  gpu_index: "0"
+  features:
+    max_num_features: 8192
+  sequential:
+    overlap: 10
+  mapper:
+    init_min_tri_angle: 5.0
+    init_min_num_inliers: null
+
+dense:
+  patch_match_gpu: true
+  patch_match_gpu_index: "0"
+  min_registration_fraction: 0.9
+
+masking:
+  approved_for_reconstruction: false
